@@ -1,0 +1,4 @@
+scp administrador@192.168.0.116:/mysql/backups/wms/wmszf-01-10-2022_17-30.sql /mnt/c/Users/USUARIO/Desktop/wmszf-01-10-2022_17-30.sql
+scp administrador@192.168.0.116:/mysql/backups/wms/wmszf-01-10-2022_12-30.sql /mnt/c/Users/USUARIO/Desktop/wmszf-01-10-2022_12-30.sql
+
+Buscar comando Rsync

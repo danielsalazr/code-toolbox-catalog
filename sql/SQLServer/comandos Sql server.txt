@@ -1,0 +1,16 @@
+
+#Encontrar tabla principal de una llave foranea 
+
+SELECT FK.name, PFK.name AS parentTable, RFK.name AS referencedTable
+FROM sys.foreign_keys FK
+INNER JOIN sys.objects PFK ON PFK.object_id = FK.parent_object_id
+INNER JOIN sys.objects RFK ON RFK.object_id = FK.referenced_object_id
+
+
+#Encontrar tabla principal de una llave foranea especifica
+
+SELECT FK.name, PFK.name AS parentTable, RFK.name AS referencedTable
+FROM sys.foreign_keys FK
+INNER JOIN sys.objects PFK ON PFK.object_id = FK.parent_object_id
+INNER JOIN sys.objects RFK ON RFK.object_id = FK.referenced_object_id
+where FK.name = 'FK_AREAFUNCI_EMPLEADO_03';

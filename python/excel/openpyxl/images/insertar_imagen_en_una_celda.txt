@@ -1,0 +1,29 @@
+Sí, es posible insertar una imagen en una celda de un libro de Excel utilizando la librería openpyxl de Python. Aquí te dejo un ejemplo de cómo hacerlo:
+
+Copy code
+from openpyxl import Workbook
+from openpyxl.drawing.image import Image
+
+# Crea un libro de Excel y una hoja
+wb = Workbook()
+ws = wb.active
+
+# Agrega la imagen a la hoja
+img = Image('image.jpg')
+ws.add_image(img, 'A1')
+
+# Guarda el libro de Excel
+wb.save('book.xlsx')
+En este ejemplo, se agrega la imagen image.jpg a la celda A1 de la hoja de cálculo activa del libro de Excel. Luego, se guarda el libro de Excel como book.xlsx.
+
+También es posible especificar la posición y el tamaño de la imagen en la hoja de cálculo utilizando los atributos anchor y size del objeto Image, como se muestra a continuación:
+
+Copy code
+# Agrega la imagen a la hoja con un tamaño específico y en una posición determinada
+img = Image('image.jpg')
+img.anchor = 'B2'
+img.size = (200, 100)
+ws.add_image(img)
+En este caso, la imagen se agregará a la celda B2 y tendrá un ancho de 200 píxeles y un alto de 100 píxeles.
+
+Espero que esto te ayude. Si tienes alguna pregunta adicional, no dudes en preguntar.

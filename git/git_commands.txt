@@ -1,0 +1,233 @@
+//Guia Realizada por Daniel Salazar
+
+
+manejo de .gitignore
+	-*.extension  			// Ignorar todos los archivos con dicha extension
+	-*.jpg					// ignorar todos los jpg
+	-/nombre de carpeta		// ignorar contenido de carpetas
+	-.env 					// ignorar archivo de variables de entorno
+	-!nombre de archivo		// no ingnorar lo deseado
+
+subir archivos binarios que no es bueno subir a github
+	-por ftp
+	-por un content delivery network
+	-por rsync
+	- imgur			//   https://imgur.com/
+	
+--------------------------- Manejo de repositorio ---------------------------
+
+Inicializar repositorio en carpeta
+	-git init
+
+Anadir todo el contenido de la carpeta al repositorio
+	-git add .
+
+anadir un archivo al repositorio
+	-git add arvhivo.txt
+
+configurar git 
+	-git config
+
+ver configuracion extendida 
+	-git config -l
+
+configurar nombre del usuario en el repositorio
+	-git config --global user.name "Daniel Salazar"
+
+configurar email del usuario en el repositorio
+	-git config --global user.email "DanielSalazr@hotmail.com"
+
+	
+ver donde estan las configuraciones guardadas
+	-git config --list --show-origin
+	
+anadir cambios al repositorio
+	-git commit -m "anadir nuevo cambio al repositorio"
+
+anadir cambio al repositorio y hacer add al mismo tiempo (solo funciona si a un arhivo ya le habias hecho add
+	-git commit -am "explicacion del cambio realizado"
+	
+ammend reconstruir commit al que le falto algo o enviaste algo equivoco
+	(ammend significa remendar en ingles)
+	(ammend significa remendar en ingles)
+	(no se debe utilizar una vez hecho git push, solo utilizar en local
+	si hizo push, cree un nuevo commit)
+	
+	-git add .
+	-git commit --amend
+
+--------------------------- Eliminacion de archivos  ---------------------------
+
+sacar archivo del repositorio (sto es como quitarle el add) 
+	-git rm archivo.txt
+
+borrar en memoria ramel archivo del repositorio
+	-git rm --cached archivos.txt
+	
+--------------------------- Verificacion de repositorio  ---------------------------
+
+ver diferencias realizadas entre el directorio actual y el staging antes de hacer commit
+	-git diff
+	-git diff HEAD
+
+comparar diferencias entre dos versiones 
+	-git diff aeded8e5941a1811dbd310f9aee8d1a03c03dfce 3da30c1b0f0b33fcad28f747dae7daa471c4faf6
+
+verificar status del repositorio 
+	-git status
+
+verificar cambios de version hechos con commit
+	-git log
+
+verificar todas las versiones de los cambios realizados en un archivo
+	-git log archivo.txt
+
+ver cantidad de cambios hechos en los archivos del repositorio
+	-git log --stat
+
+--------------------------- Navegar entre Ramas o versiones ---------------------------
+
+ver las ramas existentes y la rama actualmente seleccionada
+	-git branch
+
+Crear una rama nueva 
+	-git branch cabecera (cambiar cabecera por el nombre de la rama)
+
+cambiarse a otra rama 
+	-git chekout cabecera
+
+retornar a una version anterior de forma brusca y sin regreso
+	-git reset aeded8e5941a1811dbd310f9aee8d1a03c03dfce --hard
+
+retornar a una version anterior conservando los cambios en staging
+	-git reset aeded8e5941a1811dbd310f9aee8d1a03c03dfce --soft
+
+Ver los cambios relizados en un archivo mostrando el ultimo commit
+	-git show archivo.txt
+
+ver como era un archivo en una de sus versiones 
+	-git checkout 3da30c1b0f0b33fcad28f747dae7daa471c4faf6 historia.txt (esto solo cambia el archivo)
+
+retornar el archivo a su version mas reciente 
+	-git checkout master historia.txt
+	
+--------------------------- Manejo repositorio remoto ---------------------------
+
+acceder al repositorio remoto en github
+	-dar download code en github y copiar la direccion https
+	-git remote add origin https://github.com/danielsalazr/hyperblofg.git
+	
+eliminar direccion de repositorio de git
+	-git remote remove origin
+
+ver los repositorios remotos 
+	-git remote
+
+ver direcciones para hacer fetch y push 
+	-git remote -v
+
+traer el repositorio desde el servidor o github 
+	-git pull origin main (se debe hacer antes que push)
+	-git pull origin main --allow-unrelated-histories (en casi que el repositorio niegue el merge)
+
+actualizar repositorio en github con contenido del servidor
+	-git push origin main
+
+Forzar el push 
+	-git push --force origin <rama-a-empujar>
+
+salir de vim
+	-esc+shift+z+z
+
+para ver mi historial de cambios
+
+	-git reflog
+
+Si tenemos un error por Merge al hacer pull request o algo parecido
+	-git reset --merge
+	-git abort --merge
+	Forzar el push
+	-git push --force origin <rama-a-empujar>
+
+--------------------------- configurar llave ssh en local ---------------------------
+
+(Esto es para no tener que ingresar clave en cada push)
+
+Primer paso: Generar tus llaves SSH. Recuerda que es muy buena idea proteger tu llave privada con una contraseña.
+
+	-ssh-keygen -t rsa -b 4096 -C "tu@email.com"
+	
+	Crear una segunda llave ssh:
+		-ssh-keygen -t rsa -b 4096 -C "tu@email.com" -f ~/.ssh/id_rsa_second
+	
+	
+
+Después nos pide una contraseña con espacios (es recomendable ponerla) passphrase
+
+Nos genera la llave privada: id_rsa en una carpeta oculta .ssh dentro del directorio home o users y la llave pública id_rsa.pub
+
+Ver el la llave ssh publica en linux
+	-cat ~/.ssh/id_rsa.pub | pbcopy
+
+Segundo paso: Terminar de configurar nuestro sistema.
+En Windows y Linux:
+
+# Encender el "servidor" de llaves SSH de tu computadora:
+	-eval $(ssh-agent -s)
+
+Añadir tu llave SSH a este "servidor":
+	-*ssh-add ruta-donde-guardaste-tu-llave-privada
+
+En estos momentos debemos de ir a nuestro GitHub → settings → SSH and GPG Keys → New SSH Key
+
+En title ponemos algo que identifique la Lap o el computador que estemos usando, en key pegamos lo que copiamos de nuestra llave pública:
+
+Damos click a Add SSH Key, podemos ver que nos agregó una nueva llave con el nombre que le dimos, pero aún no se ha usado.
+
+Copiamos la llave pública de cualquiera de nuestros repositorio de GitHub (Clone with SSH)
+
+--------------------------- Configurar múltiples colaboradores en un repositorio de GitHub ---------------------------
+
+
+	-Solo debemos entrar a la configuración de colaboradores de nuestro
+	proyecto (Repositorio > Settings > Collaborators) y añadir el email
+	o username de los nuevos colaboradores.
+
+	-el invitado debera revisar su email y aceptar la invitacion de colaborador
+	Si el usuario no aparece o no se ve
+
+	-ir a configuracion en la esquina superior derecha > settings > Emails
+
+--------------------------- configurar llave ssh en local ---------------------------
+
+(Esto es para no tener que ingresar clave en cada push)
+
+Primer paso: Generar tus llaves SSH. Recuerda que es muy buena idea proteger tu llave privada con una contraseña.
+
+	-ssh-keygen -t rsa -b 4096 -C "tu@email.com"
+
+Segundo paso: Terminar de configurar nuestro sistema.
+En Windows y Linux:
+
+# Encender el "servidor" de llaves SSH de tu computadora:
+	-eval $(ssh-agent -s)
+
+Añadir tu llave SSH a este "servidor":
+	-*ssh-add ruta-donde-guardaste-tu-llave-privada
+
+--------------------------- Configurar múltiples colaboradores en un repositorio de GitHub ---------------------------
+
+	-Solo debemos entrar a la configuración de colaboradores de nuestro
+	proyecto (Repositorio > Settings > Collaborators) y añadir el email
+	o username de los nuevos colaboradores.
+
+	-el invitado debera revisar su email y aceptar la invitacion de colaborador
+
+	Si el usuario no aparece o no se ve
+
+	-ir a configuracion en la esquina superior derecha > settings > Emails
+
+hacer git pull cada que se vaya a utilizar el proyecto, con esto se mantiene
+actualizado
+----------------------------------------------------------------------------------------------
+version mas reciente al hacer git log se reflejara con la cabecera HEAD

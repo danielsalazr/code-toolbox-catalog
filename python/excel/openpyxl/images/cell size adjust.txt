@@ -1,0 +1,32 @@
+Sí, es posible ajustar el tamaño de una celda en una hoja de cálculo de Excel utilizando la librería openpyxl de Python. Aquí te muestro cómo hacerlo:
+
+Copy code
+from openpyxl import Workbook
+
+# Crea un libro de Excel y una hoja
+wb = Workbook()
+ws = wb.active
+
+# Selecciona la celda A1 y establece su ancho en 20 píxeles
+ws['A1'].column_width = 20
+
+# Selecciona la celda B2 y establece su alto en 30 píxeles
+ws.row_dimensions[2].height = 30
+
+# Guarda el libro de Excel
+wb.save('book.xlsx')
+En este ejemplo, se establece el ancho de la celda A1 en 20 píxeles y el alto de la celda B2 en 30 píxeles. Luego, se guarda el libro de Excel como book.xlsx.
+
+También es posible establecer el tamaño de varias celdas a la vez utilizando un rango de celdas. Por ejemplo:
+
+Copy code
+# Selecciona las celdas A1:C3 y establece su ancho en 20 píxeles
+ws['A1:C3'].column_width = 20
+
+# Selecciona las celdas A1:C3 y establece su alto en 30 píxeles
+for row in ws['A1:C3']:
+    for cell in row:
+        cell.row_height = 30
+En este caso, se establece el ancho de las celdas A1, B1, C1, A2, B2 y C2 en 20 píxeles y el alto de las celdas A1, A2 y A3 en 30 píxeles.
+
+Espero que esto te ayude. Si tienes alguna pregunta adicional, no dudes en preguntar.
