@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+        label{
+            width: 100px;
+            border-bottom: solid 5px #fff;
+        }
+        label:hover{
+            width: 100px;
+            border-bottom-color: aqua;
+        }
+
+        input:checked+#divMenu1 {
+           display: none;   
+        }
+        input:not(:hover)+.divMenu:not(:hover) {
+           display: none;  
+        }
+        .divMenu{
+            /* width: 200px; */
+            display: block;
+            width: 200px;
+            /* calc(fit-content); */
+            height: fit-content;
+            background-color: pink;
+            color: black;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            padding-left: 30px;
+            padding-top: 8px;
+            padding-bottom: 18px;
+            border-radius: 10px;
+        }
+        .divMenu ul{
+            /* width: 200px; */
+            width: calc(fit-content);
+            /* calc(fit-content); */
+            height: fit-content;
+            background-color: rgb(156, 235, 147);
+        }
+        .divMenu li{
+            margin-top: 6px;
+            width: fit-content;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="container">
+        <label for="cb1">[cb1]</label>
+        <input type="checkbox" style="display: none" id="cb1">
+        <div class="divMenu" id="divMenu1" >
+            <ul>
+                <li>
+                    <a href="#">Opcion 1</a>
+                </li>
+                <li>
+                    <a href="#">Opcion 2</a>
+                </li>
+                <li>
+                    <a href="#">Opcion 3</a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+    
+</body>
+</html>

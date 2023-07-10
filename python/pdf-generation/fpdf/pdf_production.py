@@ -1,4 +1,3 @@
-t
 from django.conf import settings
 
 from fpdf import FPDF

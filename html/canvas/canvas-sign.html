@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="POST" id="loginForm" href="/traslados/logon/">
+        <input type="text" name="numeroActivo" id="numeroActivo"> 
+        <input type="text" id="usuarioAsignado" readonly> 
+        <button type="submit" name="submit">Verificar Usuario</button>
+    </form>
+
+    <canvas class="firma" id="signature-pad" width="400" height="200"></canvas>
+    <button class="firma_button" id="button">Convertir a imagen</button>
+    <button class="firma_button" id="button_clear">Borrar Firma</button>
+    <img id="signature-image" src="">
+    <script src="{% static 'js/firma.js' %}"></script>
+</body>
+</html>

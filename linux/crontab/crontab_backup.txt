@@ -1,0 +1,1 @@
+- crontab -l > /home/administrador/backup_contab-e_file.txt

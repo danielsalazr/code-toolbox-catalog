@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <span class=''>Inventario Codigo de Barras</span>
+        <nav>
+            <ul>
+                <li>
+                  <a href="/">Registro</a>
+                </li>
+                <li>
+                  <a href="">Tabla</a>
+                </li>
+              </ul>
+        </nav>
+        <span class=''> Johanna Ortiz</span>
+    </header>
+    <div class="inventory">
+        <section class="inventory_fields">
+            <span class="textos">Referencia: </span>
+            <input type="text" class="camposbc" id="campBarcode">
+            <!-- <br> -->
+            <span class="textos">Fila: </span>
+            <input type="text" class="camposbc" name="" id="campBarcode">
+            <!-- <br> -->
+            <span class="textos">Estante: </span>
+            <input type="text" class="camposbc " name="" id="campBarcodeFinish">
+
+            <button onclick="sendInfo()" class="buttonSend" id="sendButton">Ingresar info</button>
+        </section>
+        <section class="inventory_table">
+            <table id="table">
+                <thead>
+                    <th>Codigo</th>
+                    <th>referencia</th>
+                    <th>cantidad</th>
+                    <th>fecha</th>
+                    <th>bla</th>
+                    <th>bla</th>
+                    <th>bla</th>
+                </thead>
+                <tbody>
+                    <tr><td>7704890421992</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td><button onclick="removeRow(this)">borrar</button></td></tr>
+                    <tr><td>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td><button onclick="removeRow(this)">borrar</button></td></tr>
+                    <tr><td>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td><button onclick="removeRow(this)">borrar</button></td></tr>
+                    <tr><td>aaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaa aaaaaaaaaa aaaaaaaa</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td><button onclick="removeRow(this)">borrar</button></td></tr>
+                </tbody>
+                <!-- <tfoot>
+                    <tr><td colspan="4"><div id="paging"><ul><li><a href="#"><span>Previous</span></a></li><li><a href="#" class="active"><span>1</span></a></li><li><a href="#"><span>2</span></a></li><li><a href="#"><span>3</span></a></li><li><a href="#"><span>4</span></a></li><li><a href="#"><span>5</span></a></li><li><a href="#"><span>Next</span></a></li></ul></div></tr>
+                </tfoot>        -->
+           </table>
+        </section>
+    </div>
+    <footer>
+        <span>Version 1</span>
+        <span>Departamento de TI</span>
+        <span>Bodega</span>
+    </footer>
+
+<script src="main.js"></script>
+    
+</body>
+</html>
