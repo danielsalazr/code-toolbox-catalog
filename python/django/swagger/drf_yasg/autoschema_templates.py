@@ -132,15 +132,15 @@ def getEmpleado(request):
             400: 'There\'s no selection',
         },
     )
-    def post(self, request,*args, **kwargs):
-        #print(request.data)
-        """
-        Crear un empleado
+def post(self, request,*args, **kwargs):
+    #print(request.data)
+    """
+    Crear un empleado
 
-        Si la consulta se realiza con exito se crea un empleado
-        """
-        empleados_serializer = EmpleadosSerializer(data=request.data)
-        if empleados_serializer.is_valid():
-            empleado = empleados_serializer.save()
+    Si la consulta se realiza con exito se crea un empleado
+    """
+    empleados_serializer = EmpleadosSerializer(data=request.data)
+    if empleados_serializer.is_valid():
+        empleado = empleados_serializer.save()
 
-        return Response(EmpleadosSerializer(empleado).data)
+    return Response(EmpleadosSerializer(empleado).data)
